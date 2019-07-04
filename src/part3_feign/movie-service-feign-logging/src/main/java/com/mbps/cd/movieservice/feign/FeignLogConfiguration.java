@@ -3,11 +3,14 @@ package com.mbps.cd.movieservice.feign;
 import feign.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import sun.rmi.runtime.Log;
 
 @Configuration
 public class FeignLogConfiguration {
+
+
     @Bean
-    Logger.Level feignLoggerLevel(){
+    public Logger.Level feignLoggerLevel(){
         /*
          * Logger.Level 可选值：
          * NONE: 不记录任何日志（默认值）
@@ -17,4 +20,5 @@ public class FeignLogConfiguration {
          */
         return Logger.Level.BASIC;
     }
+
 }

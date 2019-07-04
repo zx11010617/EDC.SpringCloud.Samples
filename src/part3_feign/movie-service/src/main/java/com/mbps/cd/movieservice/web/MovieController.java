@@ -16,23 +16,24 @@ public class MovieController {
     @Autowired
     private UserFeignClient userFeignClient;
 
+    //http://localhost:8010/user/1
     @GetMapping(value = "/user/{id}")
     public User findById(@PathVariable Long id) {
         return userFeignClient.findById(id);
     }
-
-    // 针对多个参数的情况
-    @GetMapping(value = "/userget/{username}&{password}&{token}")
-    public User getUserByMap(@PathVariable("username") String username,
-                             @PathVariable("password") String password,
-                             @PathVariable("token") String token){
-        HashMap<String, Object> map = Maps.newHashMap();
-        map.put("username", username);
-        map.put("password", password);
-        map.put("token", token);
-
-        return userFeignClient.getUserByMap(map);
-    }
+//
+//    // 针对多个参数的情况
+//    @GetMapping(value = "/userget/{username}&{password}&{token}")
+//    public User getUserByMap(@PathVariable("username") String username,
+//                             @PathVariable("password") String password,
+//                             @PathVariable("token") String token){
+//        HashMap<String, Object> map = Maps.newHashMap();
+//        map.put("username", username);
+//        map.put("password", password);
+//        map.put("token", token);
+//
+//        return userFeignClient.getUserByMap(map);
+//    }
 
     @PostMapping(value = "/post")
     public User post(@RequestBody User user){
